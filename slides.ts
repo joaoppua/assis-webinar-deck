@@ -15,6 +15,7 @@ export const slides: SlideData[] = [
     layout: SlideLayout.CENTER_STATEMENT,
     title: "PERGUNTA RÁPIDA:",
     highlight: "Você recebe leads pelo WhatsApp e sente que está deixando dinheiro na mesa?",
+    highlightTerms: ["deixando dinheiro na mesa"],
     footer: "[ Digite SIM no chat ]"
   },
   {
@@ -27,7 +28,7 @@ export const slides: SlideData[] = [
       "❌ 'Já tentei chatbot e foi um desastre'",
       "❌ 'Meu negócio é diferente'",
       "❌ 'IA parece robô e espanta cliente'",
-      "👉 Fica comigo. Vou te provar o contrário."
+      "👉 Fica comigo."
     ]
   },
   {
@@ -35,7 +36,7 @@ export const slides: SlideData[] = [
     section: "QUEM SOU EU",
     layout: SlideLayout.BIO,
     title: "Quem é Raphael Machioni?",
-    backgroundImage: "https://home.assis.co/_astro/bio_rapha_bg.D37N8k2m_2iI4Lf.avif?dpl=dpl_5yurjVkuN58Y2UKJZYEbvRdA536j",
+    backgroundImage: "/bio_rapha_bg.avif",
     content: [
       "Sou fundador da Assis, plataforma de atendimento por WhatsApp que já analisou mais de 1,2 milhão de negociações de WhatsApp.",
       "Antes, construí a operação de vendas da Vee Benefícios — que foi vendida para a Swile em um deal de R$200+ milhões."
@@ -45,7 +46,7 @@ export const slides: SlideData[] = [
     id: 5,
     section: "",
     layout: SlideLayout.BULLETS,
-    title: "NOS ÚLTIMOS 90 DIAS:",
+    title: "NOS ÚLTIMOS MESES:",
     content: [
       "👥 21.695 leads (atendidos com chatbot IA)",
       "🤝 Mais de 1,2 milhões de negociações reais processadas",
@@ -57,13 +58,17 @@ export const slides: SlideData[] = [
     section: "",
     layout: SlideLayout.BULLETS,
     title: "MAS ANTES DE CHEGAR AQUI...",
-    subtitle: "Eu QUEBREI testando as soluções do mercado.",
+    subtitle: "",
     content: [
       "❌ n8n",
       "❌ ManyChat",
       "❌ NicoChat",
       "❌ Zaia",
       "⚠️ Funcionava no início... depois virava robô burro."
+    ],
+    images: [
+      "/n8n-manychat.jpg",
+      "/manychat-complex.jpg"
     ]
   },
   {
@@ -74,16 +79,26 @@ export const slides: SlideData[] = [
     content: [
       "1️⃣ Por que aumentar tráfego pode estar PIORANDO suas vendas",
       "2️⃣ O erro que faz você perder 70% do tempo com quem nunca ia comprar",
-      "3️⃣ Como fazer follow-up que o cliente AGRADECE ao invés de ignorar",
-      "🎁 No final: uma ferramenta pra gerar caixa em 72h"
+      "3️⃣ Como fazer follow-up que o cliente AGRADECE ao invés de ignorar"
     ]
+  },
+  {
+    id: 701,
+    section: "",
+    layout: SlideLayout.ICON_IMPACT,
+    icon: "🎁",
+    highlight: "No final: um agente de IA pra gerar caixa em 72h",
+    subtitle: "Fica até o final."
   },
   {
     id: 8,
     section: "BIG IDEA",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "",
+    icon: "🎯",
     highlight: "Você não precisa de mais leads. Você precisa converter melhor os que já tem.",
+    highlightTerms: ["converter melhor"],
+    maxWidth: "max-w-[90%]",
     subtitle: "A diferença entre quem converte 10% e 30% é SISTEMA."
   },
   {
@@ -91,72 +106,93 @@ export const slides: SlideData[] = [
     section: "TEASER",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "NO FINAL...",
-    highlight: "Vou mostrar como ter acesso a tudo que vou ensinar.\n(Valor real > R$14.000)",
+    highlight: "Vou mostrar como ter acesso a tudo que vou ensinar.\n(Valor real R$14.000+)",
+    maxWidth: "max-w-[85%]",
     subtitle: "Mas primeiro, deixa eu provar que vale cada centavo."
   },
   {
     id: 10,
     section: "",
     layout: SlideLayout.BULLETS,
-    title: "OS 3 SEGREDOS",
+    title: "3 COISAS QUE DESCOBRIMOS ANALISANDO\n1,2 MILHÃO DE NEGOCIAÇÕES:",
+    highlightTerms: ["1,2 MILHÃO DE NEGOCIAÇÕES"],
     content: [
-      "🔑 Secret 1: O Paradoxo do Tráfego",
-      "🔑 Secret 2: O Filtro Invisível",
-      "🔑 Secret 3: O Lembrete Estratégico"
+      "🔑 Segredo 1: Por que mais leads pode significar MENOS vendas",
+      "🔑 Segredo 2: Como separar comprador de curioso AUTOMATICAMENTE",
+      "🔑 Segredo 3: O tipo de follow-up que fecha 80% das vendas"
     ]
   },
   {
     id: 11,
     section: "",
-    layout: SlideLayout.BULLETS,
+    layout: SlideLayout.CENTER_STATEMENT,
     title: "ISSO NÃO É PRA TODO MUNDO",
-    content: [
-      "Se você recebe 5 leads/mês e dá conta... talvez não precise.",
-      "Mas se recebe dezenas e perde venda por falta de tempo...",
-      "FICA COMIGO."
-    ]
+    highlight: "Se você recebe 5 leads/mês e dá conta...\ntalvez não precise.",
+    icon: "🤷"
+  },
+  {
+    id: 1101,
+    section: "",
+    layout: SlideLayout.ICON_IMPACT,
+    icon: "🔥",
+    title: "MAS SE RECEBE DEZENAS E PERDE VENDA POR FALTA DE TEMPO...",
+    highlight: "FICA COMIGO."
   },
   {
     id: 12,
-    section: "COMPROMISSO",
+    section: "MINHA PROMESSA",
     layout: SlideLayout.QUOTE,
-    title: "MEU COMPROMISSO",
-    highlight: "Mesmo se você não comprar nada, vai sair sabendo exatamente onde está perdendo venda e como resolver."
+    icon: "🤝",
+    title: "MINHA PROMESSA COM VOCÊ:",
+    highlight: "Nos próximos 60 minutos, vou entregar tanto valor que... mesmo se você não comprar nada, vai sair sabendo exatamente onde está perdendo venda e como resolver.",
+    maxWidth: "max-w-[85%]",
+    subtitle: "Fechado?"
   },
 
-  // PARTE 2: SECRET 1
+  // PARTE 2: SEGREDO 1
   {
     id: 13,
     section: "O PARADOXO DO TRÁFEGO",
     layout: SlideLayout.IMPACT_COVER,
-    title: "🔑 SECRET 1",
+    title: "🔑 SEGREDO 1",
     subtitle: "Por que mais leads pode significar MENOS vendas"
   },
   {
     id: 14,
-    section: "SECRET 1",
+    section: "SEGREDO 1",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "E SE EU TE DISSESSE QUE...",
-    highlight: "Aumentar o tráfego pode estar PIORANDO suas vendas?"
+    icon: "📉",
+    highlight: "Aumentar o tráfego pode estar PIORANDO suas vendas?",
+    maxWidth: "max-w-[90%]"
   },
   {
     id: 15,
-    section: "SECRET 1",
+    section: "SEGREDO 1",
     layout: SlideLayout.BULLETS,
-    title: "CASO REAL: EMPRESA X",
+    title: "VAMOS PENSAR JUNTOS:",
+    icon: "📊",
     content: [
-      "• Investia R$7.500/mês",
-      "• Dobrou pra R$15.000/mês",
-      "• Esperava: dobrar as vendas",
-      "❌ Resultado: Vendas aumentaram só 15%",
-      "❓ Por quê?"
+      "• Investe R$7.500/mês",
+      "• Dobra o investimento para R$15.000/mês",
+      "• Resultado esperado: dobrar as vendas"
     ]
   },
   {
+    id: 1501,
+    section: "SEGREDO 1",
+    layout: SlideLayout.ICON_IMPACT,
+    icon: "😱",
+    highlight: "Vendas aumentam só 15%.",
+    maxWidth: "max-w-[90%]",
+    subtitle: "Por quê?"
+  },
+  {
     id: 16,
-    section: "SECRET 1",
+    section: "SEGREDO 1",
     layout: SlideLayout.CYCLE,
     title: "O CICLO VICIOSO DO TRÁFEGO CEGO",
+    icon: "leaky-bucket",
     content: [
       "Mais tráfego",
       "Mais curiosos",
@@ -168,45 +204,46 @@ export const slides: SlideData[] = [
   },
   {
     id: 17,
-    section: "SECRET 1",
-    layout: SlideLayout.BULLETS,
+    section: "SEGREDO 1",
+    layout: SlideLayout.CYCLE,
     title: "O CICLO VIRTUOSO",
     content: [
-      "✅ Filtro inteligente",
-      "✅ Só comprador chega em você",
-      "✅ Mais tempo pro que importa",
-      "✅ Mais vendas",
-      "✅ Meta aprende quem é comprador (Melhora o tráfego)"
+      "Filtro inteligente",
+      "Só comprador chega em você",
+      "Mais tempo pro que importa",
+      "Mais vendas",
+      "Meta aprende quem compra"
     ]
   },
   {
     id: 18,
-    section: "SECRET 1",
+    section: "SEGREDO 1",
     layout: SlideLayout.BULLETS,
     title: "O SEGREDO TÉCNICO: TRACKING",
     content: [
-      "A Assis usa API oficial da Meta.",
       "1. Alguém qualificado fecha venda",
       "2. Informação VOLTA pro algoritmo",
       "3. A Meta aprende: 'esse perfil compra'",
       "4. Seu tráfego fica mais inteligente AUTOMATICAMENTE"
-    ]
+    ],
+    footer: "A Assis usa API oficial da Meta.",
+    footerImage: "/meta-logo.png"
   },
   {
     id: 19,
-    section: "SECRET 1",
+    section: "SEGREDO 1",
     layout: SlideLayout.COMPARISON,
     title: "COMPARATIVO DE TRÁFEGO",
     comparisonData: {
       leftTitle: "SEM TRACKING",
-      leftContent: ["R$5.000/mês", "200 leads", "Meta não sabe quem comprou", "Traz 50% de curiosos"],
-      rightTitle: "COM TRACKING (Assis)",
-      rightContent: ["R$5.000/mês", "200 leads", "Meta APRENDE quem comprou", "Mês 2: Mais compradores, menos curiosos"]
+      leftContent: ["R$5.000/mês", "200 leads", "Meta não sabe quem comprou", "Continua trazendo o mesmo perfil (50% curioso)"],
+      rightTitle: "COM TRACKING",
+      rightContent: ["R$5.000/mês", "200 leads", "Assis qualifica + marca quem comprou", "Meta aprende", "Mês 2: mais compradores, menos curiosos"]
     }
   },
   {
     id: 20,
-    section: "SECRET 1",
+    section: "SEGREDO 1",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "PERGUNTA",
     highlight: "Já aumentou tráfego esperando vender mais... e a conversão não mudou?",
@@ -214,33 +251,38 @@ export const slides: SlideData[] = [
   },
   {
     id: 21,
-    section: "BRIDGE",
-    layout: SlideLayout.BULLETS,
+    section: "",
+    layout: SlideLayout.CENTER_STATEMENT,
     title: "MAS ESPERA...",
-    subtitle: "Mesmo com tráfego melhor, você ainda recebe leads misturados.",
-    content: ["Como separar compradores de curiosos?", "🔑 É o que vamos ver agora."]
+    highlight: "Mesmo com tráfego melhor, você ainda recebe leads misturados. Como separar compradores de curiosos?",
+    highlightTerms: ["separar compradores de curiosos?"],
+    subtitle: "🔑 É o que vamos ver agora."
   },
 
-  // PARTE 3: SECRET 2
+  // PARTE 3: SEGREDO 2
   {
     id: 22,
     section: "O FILTRO INVISÍVEL",
     layout: SlideLayout.IMPACT_COVER,
-    title: "🔑 SECRET 2",
+    title: "🔑 SEGREDO 2",
     subtitle: "Como separar comprador de curioso AUTOMATICAMENTE"
   },
   {
-    id: 23,
-    section: "SECRET 2",
-    layout: SlideLayout.CENTER_STATEMENT,
+    id: 2201,
+    section: "SEGREDO 2",
+    layout: SlideLayout.ICON_IMPACT,
     title: "A REALIDADE",
-    highlight: "Você está gastando 70% do seu tempo com gente que NUNCA ia comprar."
+    icon: "⏳",
+    highlight: "70% do seu tempo vai pro lixo.",
+    highlightTerms: ["vai pro lixo."],
+    maxWidth: "max-w-3xl",
+    subtitle: "Gasto com gente que NUNCA ia comprar."
   },
   {
     id: 24,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.BULLETS,
-    title: "DADOS DE 50.000 ATENDIMENTOS",
+    title: "DADOS DE +21 MIL ATENDIMENTOS",
     content: [
       "• 60% dos leads nunca compravam",
       "• Tempo gasto com eles: IGUAL ao dos compradores",
@@ -249,19 +291,20 @@ export const slides: SlideData[] = [
   },
   {
     id: 25,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.BULLETS,
     title: "A CONTA DO CURIOSO",
+    icon: "🚨",
     content: [
       "200 leads/mês → 140 curiosos (70%)",
       "15 min cada = 2.100 minutos",
-      "🚨 35 HORAS/MÊS jogadas fora",
-      "Enquanto isso, os compradores estão esperando..."
-    ]
+      "35 HORAS/MÊS jogadas fora"
+    ],
+    footer: "Enquanto isso, os compradores estão esperando..."
   },
   {
     id: 26,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.TABLE,
     title: "CENÁRIO 1: SEM FILTRO",
     subtitle: "50 horas de trabalho. 28 vendas.",
@@ -277,10 +320,11 @@ export const slides: SlideData[] = [
   },
   {
     id: 27,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.TABLE,
-    title: "CENÁRIO 2: COM SDR DE IA",
+    title: "CENÁRIO 2: COM CHATBOT IA",
     subtitle: "15 horas de trabalho. 49 vendas.",
+    footer: "*Reativados pelo sistema de IA depois",
     tableData: {
       headers: ["Tipo", "Qtd", "Quem Atende?", "Tempo Seu", "Fecham"],
       rows: [
@@ -293,34 +337,50 @@ export const slides: SlideData[] = [
   },
   {
     id: 28,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.COMPARISON,
     title: "COMPARATIVO FINAL",
     comparisonData: {
       leftTitle: "SEM FILTRO",
       leftContent: ["Tempo: 50h", "Vendas: 28", "Fat: R$56.000"],
-      rightTitle: "COM SDR DE IA",
+      rightTitle: "COM CHATBOT IA",
       rightContent: ["Tempo: 15h (-70%)", "Vendas: 49 (+75%)", "Fat: R$98.000"]
-    }
+    },
+    footer: "MESMO TRÁFEGO.\nMENOS TRABALHO.\nMAIS VENDAS."
   },
   {
     id: 29,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.CENTER_STATEMENT,
-    title: "OBJEÇÃO #1",
+    title: "",
+    icon: "🤖",
     highlight: "'Se eu colocar uma IA, não vai espantar cliente? Não vai parecer robô?'"
   },
   {
     id: 30,
-    section: "SECRET 2",
-    layout: SlideLayout.QUOTE,
+    section: "SEGREDO 2",
+    layout: SlideLayout.TESTIMONIALS,
     title: "FEEDBACK DOS CLIENTES",
-    highlight: "'Parece que sou eu mesmo falando.'",
-    subtitle: "A IA aprende do SEU jeito. Não é resposta genérica."
+    subtitle: "A IA aprende do SEU jeito. Não é resposta genérica.",
+    images: [
+      "/testimonials/jesse-silva-linkedin.jpg",
+      "/testimonials/michael-cypriano-instagram.jpg",
+      "/testimonials/michael-cypriano-comment.png",
+      "/testimonials/leonardo-reboucas.jpg",
+      "/testimonials/narapetala-inicio.jpg",
+      "/testimonials/narapetala-amando.jpg",
+      "/testimonials/rodrigo-falconieri.jpg",
+      "/testimonials/caiquetelles-vida.png",
+      "/testimonials/caiquetelles-adoro.png",
+      "/testimonials/denis-moraes.png",
+      "/testimonials/andre-marques.png",
+      "/testimonials/rejane-coutinho.png",
+      "/testimonials/whatsapp-plataforma-boa.png"
+    ]
   },
   {
     id: 31,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.COMPARISON,
     title: "CHATBOT vs ASSIS",
     comparisonData: {
@@ -332,7 +392,7 @@ export const slides: SlideData[] = [
   },
   {
     id: 32,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.BULLETS,
     title: "O QUE REALMENTE ESPANTA",
     content: [
@@ -344,86 +404,114 @@ export const slides: SlideData[] = [
   },
   {
     id: 33,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.SPLIT_IMAGE,
-    title: "ANALOGIA DO RESTAURANTE",
+    title: "ANALOGIA DO SEGURANÇA DE BALADA",
     content: [
-      "SEM MAÎTRE: Chef pergunta de mesa em mesa se querem comer.",
-      "COM MAÎTRE: Recepciona, direciona.",
-      "👉 Qual vende mais? Qual atende melhor?"
+      "SEM FILTRO: Todo mundo entra, lota, VIP espera igual ao curioso.",
+      "COM FILTRO: Segurança na porta filtra, VIP vai direto pro camarote.",
+      "👉 Seu WhatsApp hoje é uma balada sem segurança na porta."
     ]
   },
   {
     id: 34,
-    section: "SECRET 2",
+    section: "SEGREDO 2",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "VOCÊ QUER ISSO?",
+    icon: "🚀",
     highlight: "Vender 75% mais, atendendo 70% menos, sem espantar cliente?",
     footer: "[ Digite SIM no chat ]"
   },
   {
     id: 35,
-    section: "BRIDGE",
+    section: "",
     layout: SlideLayout.BULLETS,
-    title: "E OS 'MORNOS'?",
+    title: "OK, VOCÊ ENTENDEU:",
     content: [
-      "Ok, filtramos os quentes.",
-      "Mas e os 60% que não estão prontos agora?",
-      "🔑 É aí que entra o terceiro segredo."
+      "✅ Precisa de um filtro",
+      "✅ A IA moderna não espanta cliente"
     ]
   },
+  {
+    id: 3501,
+    section: "",
+    layout: SlideLayout.CENTER_STATEMENT,
+    title: "Mas e os leads que não estão prontos agora?",
+    highlight: "Os 60% que são \"mornos\"?",
+    subtitle: "🔑 É aí que entra o terceiro segredo."
+  },
 
-  // PARTE 4: SECRET 3
+  // PARTE 4: SEGREDO 3
   {
     id: 36,
     section: "O LEMBRETE ESTRATÉGICO",
     layout: SlideLayout.IMPACT_COVER,
-    title: "🔑 SECRET 3",
+    title: "🔑 SEGREDO 3",
     subtitle: "O tipo de follow-up que fecha 80% das vendas"
   },
   {
-    id: 37,
-    section: "SECRET 3",
-    layout: SlideLayout.CENTER_STATEMENT,
+    id: 3601,
+    section: "SEGREDO 3",
+    layout: SlideLayout.BULLETS,
     title: "DADO DE MERCADO",
-    highlight: "80% DAS VENDAS acontecem depois do 5º contato.",
-    subtitle: "Quantos follow-ups você faz?"
+    content: [
+      "🔔 80% das vendas acontecem depois do 5º contato",
+      "⚠️ 44% dos vendedores desistem após 1 follow-up",
+      "👉 Quantos follow-ups você faz?"
+    ],
+    images: ["/brevet-follow-up-stat.jpg"],
+    footer: "Fonte: Brevet Group — blog.thebrevetgroup.com"
   },
   {
     id: 38,
-    section: "SECRET 3",
+    section: "SEGREDO 3",
     layout: SlideLayout.BULLETS,
-    title: "HISTÓRIA DA WHIRLPOOL",
+    title: "HISTÓRIA DA WHIRLPOOL (Brastemp, Consul, KitchenAid)",
+    icon: "💸",
     content: [
       "Vendedora Top Performer (tinha até Porsche).",
-      "Perdeu negócio GIGANTE com a Whirlpool (Brastemp, Consul, KitchenAid).",
+      "Perdeu negócio GIGANTE com a Whirlpool.",
       "Motivo: Esqueceu de fazer follow-up."
     ]
   },
   {
     id: 39,
-    section: "SECRET 3",
-    layout: SlideLayout.CENTER_STATEMENT,
+    section: "SEGREDO 3",
+    layout: SlideLayout.ICON_IMPACT,
+    icon: "⚙️",
     title: "A LIÇÃO",
-    highlight: "O problema não é talento. É SISTEMA."
+    highlight: "O problema não é talento.\nÉ SISTEMA."
   },
   {
     id: 40,
-    section: "SECRET 3",
-    layout: SlideLayout.TABLE,
-    title: "O QUE ACONTECE COM 100 LEADS",
-    tableData: {
-      headers: ["Situação", "Leads", "Fecham"],
-      rows: [
-        { label: "Resposta rápida + Follow-up", value1: "40", value2: "20" },
-        { label: "Demora, sem FUP", value1: "35", value2: "4" },
-        { label: "Nunca recebem FUP", value1: "25", value2: "1" }
-      ]
-    }
+    section: "SEGREDO 3",
+    layout: SlideLayout.BULLETS,
+    title: "O QUE A CIÊNCIA DIZ SOBRE FOLLOW-UP",
+    content: [
+      "📊 Leads contatados em até 5 min têm 21x mais chance de qualificar",
+      "⏱️ Após 30 min, a chance cai 100x",
+      "🚫 48% dos vendedores nunca fazem follow-up"
+    ],
+    images: ["/mit-insidesales-lead-response.png"],
+    footer: "Fonte: MIT / InsideSales.com — Lead Response Management Study"
+  },
+  {
+    id: 4001,
+    section: "SEGREDO 3",
+    layout: SlideLayout.BULLETS,
+    title: "QUANTO CUSTA CADA LEAD PERDIDO?",
+    icon: "🧮",
+    content: [
+      "Se você gasta R$25 por lead...",
+      "E perde 50 leads/mês por falta de follow-up...",
+      "São R$1.250/mês jogados no lixo",
+      "🚨 R$15.000/ano — sem contar o LTV desses clientes"
+    ],
+    footer: "Faça a conta com os SEUS números."
   },
   {
     id: 41,
-    section: "SECRET 3",
+    section: "SEGREDO 3",
     layout: SlideLayout.COMPARISON,
     title: "COBRANÇA vs CONVERSA",
     comparisonData: {
@@ -435,7 +523,7 @@ export const slides: SlideData[] = [
   },
   {
     id: 42,
-    section: "SECRET 3",
+    section: "SEGREDO 3",
     layout: SlideLayout.BULLETS,
     title: "A SOLUÇÃO ASSIS",
     content: [
@@ -446,22 +534,24 @@ export const slides: SlideData[] = [
   },
   {
     id: 43,
-    section: "SECRET 3",
+    section: "SEGREDO 3",
     layout: SlideLayout.BULLETS,
     title: "O EFEITO COMPOSTO",
+    icon: "💰",
     content: [
       "Leads mornos entram em funil automático.",
       "Recebem conteúdo relevante.",
       "30-60 dias depois: 15-20 voltam QUALIFICADOS.",
-      "💰 Vendas que você teria perdido."
+      "Vendas que você teria perdido."
     ]
   },
   {
     id: 44,
-    section: "SECRET 3",
+    section: "SEGREDO 3",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "PERGUNTA",
     highlight: "Se existisse follow-up que o cliente AGRADECE, você usaria?",
+    maxWidth: "max-w-[90%]",
     footer: "[ Digite SIM no chat ]"
   },
 
@@ -472,14 +562,14 @@ export const slides: SlideData[] = [
     layout: SlideLayout.BULLETS,
     title: "RECAPITULANDO",
     content: [
-      "🔑 Secret 1: Tráfego precisa de inteligência (Tracking).",
-      "🔑 Secret 2: Filtro inteligente economiza 70% do tempo.",
-      "🔑 Secret 3: Follow-up sistemático garante 80% das vendas."
+      "🔑 Segredo 1: Mais leads pode significar MENOS vendas — use tracking.",
+      "🔑 Segredo 2: Separe comprador de curioso AUTOMATICAMENTE.",
+      "🔑 Segredo 3: Follow-up sistemático fecha 80% das vendas."
     ]
   },
   {
     id: 46,
-    section: "OBJEÇÕES",
+    section: "",
     layout: SlideLayout.BULLETS,
     title: "'MEU NEGÓCIO É DIFERENTE'",
     content: [
@@ -489,15 +579,52 @@ export const slides: SlideData[] = [
   },
   {
     id: 47,
-    section: "CASES",
-    layout: SlideLayout.BULLETS,
+    section: "",
+    layout: SlideLayout.GRID,
     title: "FUNCIONA PARA...",
     content: [
-      "✅ Danrlei (Nicho X)",
-      "✅ Psicultura (Nicho Y)",
-      "✅ Rainha do Consórcio (Venda complexa)",
-      "Comum a todos: WhatsApp + Leads + Falta de Tempo."
+      "🏠 Corretores de Imóveis",
+      "📋 Vendedores de Consórcio",
+      "🚗 Vendedores de Carros e Motos",
+      "🦷 Dentistas e Clínicas",
+      "📸 Fotógrafos",
+      "🏋️ Nutricionistas e Personais",
+      "⚖️ Advogados",
+      "🧠 Psicólogos",
+      "🛡️ Corretores de Seguros",
+      "🎨 Arquitetos e Designers",
+      "💼 Consultores e Coaches",
+      "🎓 Escolas e Cursos"
+    ],
+    footer: "E qualquer outro negócio que vende pelo WhatsApp."
+  },
+  {
+    id: 4701,
+    section: "CASE REAL",
+    layout: SlideLayout.VIDEO,
+    title: "@psiculturalucrativa",
+    subtitle: "A IA da Assis fechou uma venda de R$14.000!",
+    videos: [
+      "/psicultura-case.mp4"
     ]
+  },
+  {
+    id: 4702,
+    section: "CASE REAL",
+    layout: SlideLayout.VIDEO,
+    title: "@michaelcypriano.corretor",
+    subtitle: "2.190 clientes atendidos com IA. Mais de R$12 milhões em VGV gerado!",
+    videos: [
+      "/michael-cypriano-case.mp4"
+    ]
+  },
+  {
+    id: 4703,
+    section: "",
+    layout: SlideLayout.CENTER_STATEMENT,
+    title: "",
+    highlight: "Comum a todos:\nWhatsApp + Leads + Falta de Tempo.",
+    highlightTerms: ["WhatsApp + Leads + Falta de Tempo."]
   },
   {
     id: 48,
@@ -508,9 +635,9 @@ export const slides: SlideData[] = [
   },
   {
     id: 49,
-    section: "PONTE",
+    section: "",
     layout: SlideLayout.CENTER_STATEMENT,
-    title: "O ATALHO",
+    title: "",
     highlight: "Você pode tentar sozinho. Ou pegar o caminho que eu criei gastando milhões.",
     subtitle: "Posso mostrar?"
   },
@@ -520,28 +647,28 @@ export const slides: SlideData[] = [
     id: 50,
     section: "O FUNCIONÁRIO 24H",
     layout: SlideLayout.IMPACT_COVER,
-    title: "APRESENTANDO: SEU SDR DE IA",
+    title: "APRESENTANDO:\nSEU CHATBOT IA",
     subtitle: "O funcionário que trabalha 24h no seu WhatsApp."
   },
   {
     id: 51,
-    section: "OFFER",
+    section: "",
     layout: SlideLayout.BULLETS,
-    title: "O QUE VOCÊ RECEBE (CORE)",
+    title: "O QUE VOCÊ RECEBE",
     content: [
-      "✅ SDR de IA configurado no WhatsApp",
+      "✅ Chatbot IA configurado no WhatsApp",
       "✅ Plataforma completa Assis (CRM)",
-      "✅ Tracking integrado com Meta Ads",
       "✅ Setup em 3 minutos",
       "✅ Suporte dedicado (30 dias)"
     ]
   },
   {
     id: 52,
-    section: "VALUE",
+    section: "",
     layout: SlideLayout.CENTER_STATEMENT,
-    title: "VALOR DO CORE",
-    highlight: "R$3.564",
+    title: "Valor anual",
+    icon: "💎",
+    highlight: "R$4.188,00",
     subtitle: "(Muito menos que um salário de SDR humano)"
   },
   {
@@ -550,7 +677,7 @@ export const slides: SlideData[] = [
     layout: SlideLayout.OFFER,
     title: "🎁 BÔNUS 1: OPERAÇÃO CAIXA RÁPIDO",
     subtitle: "Agente IA cria 3 campanhas pra rodar em 72h",
-    highlight: "Valor: R$2.997"
+    highlight: "Valor: R$1.997"
   },
   {
     id: 54,
@@ -574,7 +701,7 @@ export const slides: SlideData[] = [
     layout: SlideLayout.OFFER,
     title: "🎁 BÔNUS 4: MENTORIAS",
     subtitle: "2 Calls de Implementação ao Vivo",
-    highlight: "Valor: R$1.500"
+    highlight: "Valor: R$2.500"
   },
   {
     id: 57,
@@ -595,19 +722,39 @@ export const slides: SlideData[] = [
   {
     id: 59,
     section: "STACK",
-    layout: SlideLayout.TABLE,
-    title: "RESUMO TOTAL",
-    tableData: {
-      headers: ["Item", "Valor"],
-      rows: [
-        { label: "SDR IA + Plataforma", value1: "R$3.564" },
-        { label: "Operação Caixa Rápido", value1: "R$2.997" },
-        { label: "Diagnóstico + Academy", value1: "R$3.994" },
-        { label: "Mentorias + Comunidade", value1: "R$2.700" },
-        { label: "Café com Assis", value1: "R$1.000" },
-        { label: "TOTAL", value1: "R$14.255", highlight: true }
-      ]
-    }
+    layout: SlideLayout.BONUS_STACK,
+    title: "TUDO QUE VOCÊ RECEBE:",
+    content: [
+      "✅ Chatbot IA + Plataforma|Seu funcionário 24h no WhatsApp|R$4.188",
+      "🎁 Bônus 1: Operação Caixa Rápido|Agente IA cria 3 campanhas pra rodar em 72h|R$1.997",
+      "🎁 Bônus 2: Diagnóstico|Análise dos seus pontos de fuga de vendas|R$997",
+      "🎁 Bônus 3: Assis Academy|Treinamentos + Scripts de Vendas|R$2.997",
+      "🎁 Bônus 4: Mentorias|2 Calls de Implementação ao Vivo|R$2.500",
+      "🎁 Bônus 5: Comunidade|Grupo Vitalício de Networking|R$1.200",
+      "🎁 Bônus 6: Café com Assis|Encontro Presencial (Limitado a 30 vagas)|R$1.000"
+    ],
+    highlight: "Total: R$14.879"
+  },
+  {
+    id: 6001,
+    section: "PRICE",
+    layout: SlideLayout.CENTER_STATEMENT,
+    title: "QUANTO VALE TUDO ISSO?",
+    icon: "💰",
+    highlight: "R$14.879",
+    subtitle: "Esse é o valor real de tudo que você recebe."
+  },
+  {
+    id: 6002,
+    section: "",
+    layout: SlideLayout.BULLETS,
+    title: "MAS VOCÊ NÃO VAI PAGAR ISSO.",
+    content: [
+      "❌ Não vai pagar R$14.879",
+      "❌ Nem R$10.000",
+      "❌ Nem R$5.000",
+      "❌ Nem R$1.000 por mês"
+    ]
   },
   {
     id: 60,
@@ -615,12 +762,23 @@ export const slides: SlideData[] = [
     layout: SlideLayout.CENTER_STATEMENT,
     title: "INVESTIMENTO HOJE",
     subtitle: "Pré-lançamento por tempo limitado",
+    icon: "💳",
     highlight: "12x R$349",
     footer: "Menos de R$12 por dia"
   },
   {
+    id: 6003,
+    section: "",
+    layout: SlideLayout.CENTER_STATEMENT,
+    title: "MAS COMO VOCÊ ESTÁ AQUI AGORA...",
+    icon: "🔥",
+    highlight: "R$100/mês",
+    maxWidth: "max-w-[90%]",
+    subtitle: "Pelos 3 primeiros meses. Sem fidelidade.\nCancele quando quiser."
+  },
+  {
     id: 61,
-    section: "COST",
+    section: "",
     layout: SlideLayout.BULLETS,
     title: "CUSTO DA INÉRCIA",
     content: [
@@ -631,9 +789,10 @@ export const slides: SlideData[] = [
   },
   {
     id: 62,
-    section: "ROI",
-    layout: SlideLayout.CENTER_STATEMENT,
-    title: "ROI DE 23x",
+    section: "",
+    layout: SlideLayout.ICON_IMPACT,
+    icon: "💰",
+    title: "RETORNO DE 23x",
     highlight: "Invista R$1, volte R$23.",
     subtitle: "Uma venda paga o semestre todo."
   },
@@ -654,12 +813,13 @@ export const slides: SlideData[] = [
     section: "GUARANTEE",
     layout: SlideLayout.QUOTE,
     title: "GARANTIA DE 3 MESES",
+    icon: "🛡️",
     highlight: "Teste por 90 dias. Se não gostar, devolvo 100%.",
     subtitle: "Sem risco para você."
   },
   {
     id: 65,
-    section: "GUARANTEE",
+    section: "",
     layout: SlideLayout.BULLETS,
     title: "PRA QUEM JÁ SE QUEIMOU",
     content: [
@@ -670,35 +830,43 @@ export const slides: SlideData[] = [
   },
   {
     id: 66,
-    section: "CTA",
+    section: "",
     layout: SlideLayout.BULLETS,
     title: "COMO ENTRAR",
     content: [
-      "1. Clique no botão abaixo",
+      "1. Acesse o link abaixo",
       "2. Preencha seus dados",
-      "3. Receba acesso em 60 segundos",
-      "👉 [LINK DE CHECKOUT]"
-    ]
+      "3. Receba acesso prioritário"
+    ],
+    ctaLink: "www.assis.co"
   },
   {
     id: 67,
-    section: "URGENCY",
+    section: "",
     layout: SlideLayout.CENTER_STATEMENT,
-    title: "⚠️ IMPORTANTE",
-    highlight: "Bônus (Café com Assis) só para quem entrar AGORA durante o webinar."
+    title: "",
+    icon: "⚡",
+    highlight: "Bônus (Café com Assis) só para quem entrar AGORA durante a aula.",
+    ctaLink: "www.assis.co"
   },
   {
     id: 68,
-    section: "FINAL STACK",
-    layout: SlideLayout.BULLETS,
-    title: "TUDO ISSO POR 12x R$349",
+    section: "",
+    layout: SlideLayout.BONUS_STACK_OFFER,
+    title: "TUDO ISSO:",
     content: [
-      "✅ SDR de IA 24h",
-      "✅ Tracking Meta Ads",
-      "✅ Bônus Caixa Rápido",
-      "✅ Academy + Mentorias",
-      "✅ Garantia de 3 meses"
-    ]
+      "✅ Chatbot IA + Plataforma|R$4.188",
+      "🎁 Operação Caixa Rápido|R$1.997",
+      "🎁 Diagnóstico|R$997",
+      "🎁 Assis Academy|R$2.997",
+      "🎁 Mentorias|R$2.500",
+      "🎁 Comunidade|R$1.200",
+      "🎁 Café com Assis|R$1.000"
+    ],
+    highlight: "R$14.879",
+    subtitle: "R$100/mês",
+    footer: "Pelos 3 primeiros meses. Sem fidelidade.",
+    ctaLink: "www.assis.co"
   },
   {
     id: 69,
@@ -706,7 +874,7 @@ export const slides: SlideData[] = [
     layout: SlideLayout.CENTER_STATEMENT,
     title: "PERGUNTAS?",
     highlight: "Vou tirar dúvidas agora.",
-    footer: "Link ativo: assis.com/oferta"
+    ctaLink: "www.assis.co"
   },
   {
     id: 70,

@@ -9,7 +9,13 @@ export enum SlideLayout {
   OFFER = 'OFFER',
   IMPACT_COVER = 'IMPACT_COVER',
   BIO = 'BIO',
-  CYCLE = 'CYCLE'
+  CYCLE = 'CYCLE',
+  ICON_IMPACT = 'ICON_IMPACT',
+  VIDEO = 'VIDEO',
+  TESTIMONIALS = 'TESTIMONIALS',
+  GRID = 'GRID',
+  BONUS_STACK = 'BONUS_STACK',
+  BONUS_STACK_OFFER = 'BONUS_STACK_OFFER'
 }
 
 export interface TableRow {
@@ -29,6 +35,11 @@ export interface SlideData {
   subtitle?: string;
   content?: string[];
   highlight?: string; // For big emphasized text
+  icon?: string; // Large emoji/text for ICON_IMPACT layout
+  images?: string[]; // Images to display alongside content
+  videos?: string[]; // Video files to embed
+  highlightTerms?: string[]; // Words to highlight in brand color
+  maxWidth?: string; // Override default max-width for the text container (e.g. 'max-w-[90%]')
   tableData?: {
     headers: string[];
     rows: TableRow[];
@@ -40,5 +51,7 @@ export interface SlideData {
     rightContent: string[];
   };
   footer?: string;
+  footerImage?: string;
   backgroundImage?: string;
+  ctaLink?: string;
 }

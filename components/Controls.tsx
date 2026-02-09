@@ -20,10 +20,10 @@ const Controls: React.FC<ControlsProps> = ({ onNext, onPrev, current, total }) =
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 p-4 flex justify-between items-center bg-white/80 backdrop-blur text-slate-600 z-50 border-t border-orange-100">
+    <div className="fixed bottom-0 left-0 right-0 p-4 flex justify-between items-center text-slate-600 z-50">
       <div className="flex items-center space-x-4">
         <span className="text-sm font-mono text-slate-400">
-          SLIDE {current + 1} / {total}
+          {current + 1} / {total}
         </span>
       </div>
       
@@ -38,7 +38,7 @@ const Controls: React.FC<ControlsProps> = ({ onNext, onPrev, current, total }) =
         <button 
           onClick={onNext}
           disabled={current === total - 1}
-          className="p-2 rounded-full text-white hover:bg-[#E04828] bg-[#FF5533] transition-colors shadow-lg shadow-orange-500/30"
+          className="p-2 rounded-full hover:bg-slate-100 disabled:opacity-30 transition-colors"
         >
           <ChevronRight size={24} />
         </button>
