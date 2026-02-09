@@ -15,7 +15,8 @@ export enum SlideLayout {
   TESTIMONIALS = 'TESTIMONIALS',
   GRID = 'GRID',
   BONUS_STACK = 'BONUS_STACK',
-  BONUS_STACK_OFFER = 'BONUS_STACK_OFFER'
+  BONUS_STACK_OFFER = 'BONUS_STACK_OFFER',
+  METRIC_BARS = 'METRIC_BARS'
 }
 
 export interface TableRow {
@@ -37,6 +38,7 @@ export interface SlideData {
   highlight?: string; // For big emphasized text
   icon?: string; // Large emoji/text for ICON_IMPACT layout
   images?: string[]; // Images to display alongside content
+  imageBelow?: boolean; // When true, images render full-width below content instead of side-by-side
   videos?: string[]; // Video files to embed
   highlightTerms?: string[]; // Words to highlight in brand color
   maxWidth?: string; // Override default max-width for the text container (e.g. 'max-w-[90%]')
@@ -47,8 +49,27 @@ export interface SlideData {
   comparisonData?: {
     leftTitle: string;
     leftContent: string[];
+    leftImage?: string;
     rightTitle: string;
     rightContent: string[];
+    rightImage?: string;
+  };
+  metricBarsData?: {
+    leftLabel: string;
+    rightLabel: string;
+    metrics: Array<{
+      label: string;
+      leftValue: number;
+      rightValue: number;
+      leftDisplay: string;
+      rightDisplay: string;
+      lowerIsBetter?: boolean;
+    }>;
+    highlightMetric?: {
+      label: string;
+      leftDisplay: string;
+      rightDisplay: string;
+    };
   };
   footer?: string;
   footerImage?: string;

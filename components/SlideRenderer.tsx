@@ -173,7 +173,16 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
                  )
                })}
              </h1>
-             {data.subtitle && <p className="mt-10 text-2xl md:text-3xl text-slate-500 max-w-4xl">{data.subtitle}</p>}
+             {data.subtitle && (
+               <p className="mt-10 text-2xl md:text-3xl text-slate-500 max-w-4xl">
+                 {data.subtitle.split('\n').map((line, i) => (
+                   <React.Fragment key={i}>
+                     {line}
+                     {i < data.subtitle!.split('\n').length - 1 && <br />}
+                   </React.Fragment>
+                 ))}
+               </p>
+             )}
              {data.footer && (
                <div className="mt-14 animate-pulse bg-slate-100 px-8 py-4 rounded-full border border-slate-200">
                  <p className={`${BRAND_COLOR} font-mono font-bold text-xl`}>{data.footer}</p>
@@ -184,16 +193,16 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
 
       case SlideLayout.BULLETS:
         const hasImages = !!(data.images?.length);
-        const hasSideVisual = !!(data.icon || hasImages);
+        const hasSideVisual = !!(data.icon || (hasImages && !data.imageBelow));
         return (
-          <div className={`flex ${hasSideVisual ? 'flex-row items-center' : 'flex-col justify-center'} h-full ${hasImages ? 'px-10 md:px-16' : 'px-12 md:px-24 lg:px-28'} ${data.ctaLink ? 'pb-32' : ''}`}>
+          <div className={`flex ${data.imageBelow ? 'flex-col justify-center' : hasSideVisual ? 'flex-row items-center' : 'flex-col justify-center'} h-full ${hasImages && !data.imageBelow ? 'px-10 md:px-16' : 'px-12 md:px-24 lg:px-28'} ${data.ctaLink ? 'pb-32' : ''}`}>
             <div className={hasSideVisual ? 'flex-1 pr-8' : ''}>
               {data.section && (
                 <h2 className={`${BRAND_COLOR} font-bold mb-4 uppercase tracking-widest text-base md:text-lg`}>
                   {data.section}
                 </h2>
               )}
-              <h1 className={`font-black text-slate-900 mb-4 leading-[1.1] ${hasImages ? 'text-4xl md:text-5xl lg:text-6xl' : 'text-5xl md:text-6xl lg:text-7xl mb-6'}`}>
+              <h1 className={`font-black text-slate-900 mb-4 leading-[1.1] ${hasImages && !data.imageBelow ? 'text-4xl md:text-5xl lg:text-6xl' : 'text-5xl md:text-6xl lg:text-7xl mb-6'}`}>
                 {(data.title || "").split('\n').map((line, li) => (
                   <React.Fragment key={li}>
                     {data.highlightTerms?.length ? highlightText(line, data.highlightTerms) : line}
@@ -201,15 +210,15 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
                   </React.Fragment>
                 ))}
               </h1>
-              {data.subtitle && <p className={`text-slate-500 font-medium ${hasImages ? 'text-xl md:text-2xl mb-6' : 'text-2xl md:text-3xl mb-10'}`}>{data.subtitle}</p>}
-              <ul className={hasImages ? 'space-y-3' : 'space-y-5'}>
+              {data.subtitle && <p className={`text-slate-500 font-medium ${hasImages && !data.imageBelow ? 'text-xl md:text-2xl mb-6' : 'text-2xl md:text-3xl mb-10'}`}>{data.subtitle}</p>}
+              <ul className={hasImages && !data.imageBelow ? 'space-y-3' : 'space-y-5'}>
                 {data.content?.map((item, idx) => (
                   <motion.li
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 + 0.2 }}
-                    className={`flex items-start text-slate-800 leading-snug font-semibold ${hasImages ? 'text-2xl md:text-3xl' : 'text-3xl md:text-[2.5rem]'}`}
+                    className={`flex items-start text-slate-800 leading-snug font-semibold ${hasImages && !data.imageBelow ? 'text-2xl md:text-3xl' : 'text-3xl md:text-[2.5rem]'}`}
                   >
                     {!hasCustomBullet(item) && (
                       <span className={`mr-6 mt-2 ${BRAND_COLOR} shrink-0`}>
@@ -223,10 +232,26 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
 
             </div>
 
-            {/* Optional images on the right */}
-            {hasImages && (
+            {/* Full-width image below content */}
+            {hasImages && data.imageBelow && (
               <motion.div
-                className="flex-shrink-0 w-[50%] flex flex-col gap-4 items-center justify-center"
+                className="mt-8 w-full"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                {data.images!.map((src, i) => (
+                  <div key={i} className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200 bg-white">
+                    <img src={src} alt="" className="w-full h-auto object-contain" />
+                  </div>
+                ))}
+              </motion.div>
+            )}
+
+            {/* Optional images on the right */}
+            {hasImages && !data.imageBelow && (
+              <motion.div
+                className="flex-shrink-0 w-[28%] flex flex-col gap-4 items-center justify-center"
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
@@ -444,7 +469,7 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
               </div>
             )}
             <h1 className={`text-4xl md:text-6xl lg:text-7xl font-black text-slate-800 mb-12 leading-[1.15] ${data.maxWidth || 'max-w-6xl'}`}>
-              {data.highlight}
+              {data.highlightTerms?.length ? highlightText(data.highlight || '', data.highlightTerms) : data.highlight}
             </h1>
             {data.subtitle && <p className={`text-2xl md:text-3xl ${BRAND_COLOR} uppercase tracking-widest font-bold`}>{data.subtitle}</p>}
           </div>
@@ -465,7 +490,7 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
             <div className="w-1/2 h-3/4 bg-white rounded-l-3xl p-12 flex flex-col justify-center border-l border-t border-b border-orange-100 shadow-2xl shadow-orange-900/5">
                <ul className="space-y-8">
                 {data.content?.map((item, idx) => (
-                  <li key={idx} className={`text-2xl md:text-3xl text-slate-700 font-semibold border-l-4 ${BRAND_BORDER} pl-6 py-1`}>
+                  <li key={idx} className={`text-2xl md:text-3xl text-slate-700 font-semibold py-1 ${hasCustomBullet(item) ? 'pl-2' : `border-l-4 ${BRAND_BORDER} pl-6`}`}>
                     {item}
                   </li>
                 ))}
@@ -508,33 +533,58 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
           </div>
         );
 
-      case SlideLayout.COMPARISON:
+      case SlideLayout.COMPARISON: {
+        const hasCompImages = !!(data.comparisonData?.leftImage || data.comparisonData?.rightImage);
         return (
           <div className="flex flex-col h-full justify-center px-10 md:px-16">
-            <h1 className="text-5xl md:text-6xl font-black text-slate-900 mb-12 text-center">{data.title}</h1>
+            <h1 className={`font-black text-slate-900 text-center ${hasCompImages ? 'text-4xl md:text-5xl mb-6' : 'text-5xl md:text-6xl mb-12'}`}>{data.title}</h1>
             <div className="flex gap-8">
-              <div className="flex-1 bg-red-50 border border-red-100 p-8 md:p-10 rounded-2xl">
-                 <h2 className="text-2xl md:text-3xl font-black text-red-500 mb-8 uppercase tracking-wider">{data.comparisonData?.leftTitle}</h2>
-                 <ul className="space-y-5">
-                   {data.comparisonData?.leftContent?.map((item, i) => (
-                     <li key={i} className="flex items-start text-red-900/80 text-2xl md:text-[1.7rem] font-semibold leading-snug">
-                       <X className="w-8 h-8 text-red-400 mr-3 shrink-0 mt-0.5" /> {item}
-                     </li>
-                   ))}
-                 </ul>
+              <div className="flex-1 flex flex-col gap-4">
+                <div className={`bg-red-50 border border-red-100 rounded-2xl flex-1 ${hasCompImages ? 'p-5 md:p-6' : 'p-8 md:p-10'}`}>
+                   <h2 className={`font-black text-red-500 uppercase tracking-wider ${hasCompImages ? 'text-xl md:text-2xl mb-4' : 'text-2xl md:text-3xl mb-8'}`}>{data.comparisonData?.leftTitle}</h2>
+                   <ul className={hasCompImages ? 'space-y-2' : 'space-y-5'}>
+                     {data.comparisonData?.leftContent?.map((item, i) => (
+                       <li key={i} className={`flex items-start text-red-900/80 font-semibold leading-snug ${hasCompImages ? 'text-lg md:text-xl' : 'text-2xl md:text-[1.7rem]'}`}>
+                         <X className={`text-red-400 mr-3 shrink-0 mt-0.5 ${hasCompImages ? 'w-6 h-6' : 'w-8 h-8'}`} /> {item}
+                       </li>
+                     ))}
+                   </ul>
+                </div>
+                {data.comparisonData?.leftImage && (
+                  <motion.div
+                    className="rounded-xl overflow-hidden shadow-lg border-2 border-red-200 bg-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <img src={data.comparisonData.leftImage} alt="" className="w-full h-auto object-contain" />
+                  </motion.div>
+                )}
               </div>
-              <div className="flex-1 bg-white border border-orange-100 shadow-xl shadow-orange-500/10 p-8 md:p-10 rounded-2xl relative overflow-hidden">
-                 <div className="absolute top-0 right-0 p-4 opacity-10">
-                   <Check size={120} className="text-[#FF5533]" />
-                 </div>
-                 <h2 className={`text-2xl md:text-3xl font-black ${BRAND_COLOR} mb-8 uppercase tracking-wider`}>{data.comparisonData?.rightTitle}</h2>
-                 <ul className="space-y-5">
-                   {data.comparisonData?.rightContent?.map((item, i) => (
-                     <li key={i} className="flex items-start text-slate-800 font-bold text-2xl md:text-[1.7rem] leading-snug">
-                       <Check className={`w-8 h-8 ${BRAND_COLOR} mr-3 shrink-0 mt-0.5`} /> {item}
-                     </li>
-                   ))}
-                 </ul>
+              <div className="flex-1 flex flex-col gap-4">
+                <div className={`bg-white border border-orange-100 shadow-xl shadow-orange-500/10 rounded-2xl relative overflow-hidden flex-1 ${hasCompImages ? 'p-5 md:p-6' : 'p-8 md:p-10'}`}>
+                   <div className="absolute top-0 right-0 p-4 opacity-10">
+                     <Check size={120} className="text-[#FF5533]" />
+                   </div>
+                   <h2 className={`font-black ${BRAND_COLOR} uppercase tracking-wider ${hasCompImages ? 'text-xl md:text-2xl mb-4' : 'text-2xl md:text-3xl mb-8'}`}>{data.comparisonData?.rightTitle}</h2>
+                   <ul className={hasCompImages ? 'space-y-2' : 'space-y-5'}>
+                     {data.comparisonData?.rightContent?.map((item, i) => (
+                       <li key={i} className={`flex items-start text-slate-800 font-bold leading-snug ${hasCompImages ? 'text-lg md:text-xl' : 'text-2xl md:text-[1.7rem]'}`}>
+                         <Check className={`${BRAND_COLOR} mr-3 shrink-0 mt-0.5 ${hasCompImages ? 'w-6 h-6' : 'w-8 h-8'}`} /> {item}
+                       </li>
+                     ))}
+                   </ul>
+                </div>
+                {data.comparisonData?.rightImage && (
+                  <motion.div
+                    className="rounded-xl overflow-hidden shadow-lg border-2 border-orange-200 bg-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <img src={data.comparisonData.rightImage} alt="" className="w-full h-auto object-contain" />
+                  </motion.div>
+                )}
               </div>
             </div>
             {data.footer && (
@@ -546,6 +596,7 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
             )}
           </div>
         );
+      }
 
       case SlideLayout.ICON_IMPACT:
         return (
@@ -664,12 +715,11 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
             </div>
 
             {/* Mosaic of testimonial images - no cropping */}
-            <div className="flex-1 flex flex-wrap gap-3 justify-center items-start content-start overflow-hidden min-h-0">
+            <div className="flex-1 grid grid-cols-4 gap-3 auto-rows-min overflow-y-auto min-h-0 content-start">
               {testimonialImages.map((src, i) => (
                 <motion.div
                   key={i}
-                  className="rounded-xl overflow-hidden shadow-lg border border-slate-200/60 bg-white"
-                  style={{ maxHeight: '30%', maxWidth: '24%' }}
+                  className="rounded-xl overflow-hidden shadow-lg border border-slate-200/60"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.05 + 0.1, duration: 0.3 }}
@@ -677,7 +727,7 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
                   <img
                     src={src}
                     alt=""
-                    className="w-full h-full object-contain"
+                    className="w-full h-auto object-contain"
                   />
                 </motion.div>
               ))}
@@ -775,7 +825,7 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
 
             {data.highlight && (
               <motion.div
-                className="mt-3 text-center"
+                className="mt-3 flex justify-end"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: bonusItems.length * 0.1 + 0.3 }}
@@ -851,6 +901,95 @@ const SlideRenderer: React.FC<Props> = ({ data }) => {
                 )}
               </motion.div>
             </div>
+          </div>
+        );
+      }
+
+      case SlideLayout.METRIC_BARS: {
+        const mbd = data.metricBarsData;
+        if (!mbd) return <div>No data</div>;
+        const BAR_MAX_H = 220;
+        const isLastHighlight = (idx: number) => idx === mbd.metrics.length - 1;
+
+        return (
+          <div className="flex flex-col h-full justify-center px-10 md:px-16 overflow-hidden">
+            {data.section && (
+              <h2 className={`${BRAND_COLOR} font-bold mb-2 uppercase tracking-widest text-base`}>
+                {data.section}
+              </h2>
+            )}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-[1.1]">{data.title}</h1>
+
+            {/* Legend */}
+            <div className="flex gap-8 mb-8">
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded bg-slate-300" />
+                <span className="text-lg font-bold text-slate-500">{mbd.leftLabel}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded bg-[#FF5533]" />
+                <span className="text-lg font-bold text-slate-800">{mbd.rightLabel}</span>
+              </div>
+            </div>
+
+            {/* Vertical bar groups */}
+            <div className="flex items-end gap-6 justify-center">
+              {mbd.metrics.map((metric, idx) => {
+                const maxVal = Math.max(metric.leftValue, metric.rightValue);
+                const leftH = (metric.leftValue / maxVal) * BAR_MAX_H;
+                const rightH = (metric.rightValue / maxVal) * BAR_MAX_H;
+                const leftIsWorse = metric.lowerIsBetter ? metric.leftValue > metric.rightValue : metric.leftValue < metric.rightValue;
+                const highlight = isLastHighlight(idx);
+
+                return (
+                  <motion.div
+                    key={idx}
+                    className={`flex-1 flex flex-col items-center ${highlight ? 'bg-slate-900 rounded-2xl pt-10 pb-4 px-4' : ''}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.15 + 0.2 }}
+                  >
+                    {/* Bars container */}
+                    <div className="flex items-end gap-3 justify-center" style={{ height: BAR_MAX_H }}>
+                      {/* Left bar */}
+                      <div className="flex flex-col items-center gap-2">
+                        <span className={`font-black text-sm md:text-base font-mono whitespace-nowrap ${highlight ? 'text-slate-400' : 'text-slate-500'}`}>
+                          {metric.leftDisplay}
+                        </span>
+                        <motion.div
+                          className={`w-14 md:w-16 rounded-t-xl ${leftIsWorse ? 'bg-slate-300' : 'bg-emerald-400'}`}
+                          initial={{ height: 0 }}
+                          animate={{ height: leftH }}
+                          transition={{ duration: 0.8, delay: idx * 0.15 + 0.4, ease: "easeOut" }}
+                        />
+                      </div>
+                      {/* Right bar */}
+                      <div className="flex flex-col items-center gap-2">
+                        <span className={`font-black text-sm md:text-base font-mono whitespace-nowrap ${highlight ? BRAND_COLOR : 'text-slate-800'}`}>
+                          {metric.rightDisplay}
+                        </span>
+                        <motion.div
+                          className={`w-14 md:w-16 rounded-t-xl ${!leftIsWorse ? 'bg-slate-300' : 'bg-[#FF5533]'}`}
+                          initial={{ height: 0 }}
+                          animate={{ height: rightH }}
+                          transition={{ duration: 0.8, delay: idx * 0.15 + 0.6, ease: "easeOut" }}
+                        />
+                      </div>
+                    </div>
+                    {/* Label */}
+                    <p className={`mt-3 text-sm md:text-base font-black uppercase tracking-wide text-center leading-tight ${highlight ? 'text-white' : 'text-slate-600'}`}>
+                      {metric.label}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {data.footer && (
+              <div className="mt-8 text-center">
+                <p className={`${BRAND_COLOR} font-black text-xl md:text-2xl tracking-wide`}>{data.footer}</p>
+              </div>
+            )}
           </div>
         );
       }

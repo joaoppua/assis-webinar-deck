@@ -145,6 +145,7 @@ export const slides: SlideData[] = [
     icon: "🤝",
     title: "MINHA PROMESSA COM VOCÊ:",
     highlight: "Nos próximos 60 minutos, vou entregar tanto valor que... mesmo se você não comprar nada, vai sair sabendo exatamente onde está perdendo venda e como resolver.",
+    highlightTerms: ["sair sabendo exatamente"],
     maxWidth: "max-w-[85%]",
     subtitle: "Fechado?"
   },
@@ -242,11 +243,40 @@ export const slides: SlideData[] = [
     }
   },
   {
+    id: 1901,
+    section: "SEGREDO 1",
+    layout: SlideLayout.BULLETS,
+    title: "NA PRÁTICA: SEM TRACKING",
+    subtitle: "Gerenciador de Anúncios — Meta Ads",
+    content: [
+      "❌ CPL: R$1.862,65",
+      "❌ ROAS: 0,02",
+      "❌ Custo por compra: R$5.951"
+    ],
+    images: ["/ads-sem-tracking.png"],
+    imageBelow: true
+  },
+  {
+    id: 1902,
+    section: "SEGREDO 1",
+    layout: SlideLayout.BULLETS,
+    title: "NA PRÁTICA: COM TRACKING",
+    subtitle: "Gerenciador de Anúncios — Meta Ads",
+    content: [
+      "✅ CPL: R$16,80",
+      "✅ ROAS: 1,79",
+      "✅ Custo por compra: R$167"
+    ],
+    images: ["/ads-com-tracking.png"],
+    imageBelow: true
+  },
+  {
     id: 20,
     section: "SEGREDO 1",
     layout: SlideLayout.CENTER_STATEMENT,
     title: "PERGUNTA",
     highlight: "Já aumentou tráfego esperando vender mais... e a conversão não mudou?",
+    highlightTerms: ["conversão não mudou?"],
     footer: "[ Digite SIM no chat ]"
   },
   {
@@ -338,15 +368,19 @@ export const slides: SlideData[] = [
   {
     id: 28,
     section: "SEGREDO 2",
-    layout: SlideLayout.COMPARISON,
+    layout: SlideLayout.METRIC_BARS,
     title: "COMPARATIVO FINAL",
-    comparisonData: {
-      leftTitle: "SEM FILTRO",
-      leftContent: ["Tempo: 50h", "Vendas: 28", "Fat: R$56.000"],
-      rightTitle: "COM CHATBOT IA",
-      rightContent: ["Tempo: 15h (-70%)", "Vendas: 49 (+75%)", "Fat: R$98.000"]
+    metricBarsData: {
+      leftLabel: "SEM FILTRO",
+      rightLabel: "COM CHATBOT IA",
+      metrics: [
+        { label: "Tempo de trabalho", leftValue: 50, rightValue: 15, leftDisplay: "50h", rightDisplay: "15h", lowerIsBetter: true },
+        { label: "Vendas fechadas", leftValue: 28, rightValue: 49, leftDisplay: "28", rightDisplay: "49" },
+        { label: "Faturamento", leftValue: 56000, rightValue: 98000, leftDisplay: "R$56k", rightDisplay: "R$98k" },
+        { label: "Fat. por hora", leftValue: 1120, rightValue: 6533, leftDisplay: "R$1.120/h", rightDisplay: "R$6.533/h" }
+      ]
     },
-    footer: "MESMO TRÁFEGO.\nMENOS TRABALHO.\nMAIS VENDAS."
+    footer: "MESMO TRÁFEGO. MENOS TRABALHO. MAIS VENDAS."
   },
   {
     id: 29,
@@ -406,11 +440,11 @@ export const slides: SlideData[] = [
     id: 33,
     section: "SEGREDO 2",
     layout: SlideLayout.SPLIT_IMAGE,
-    title: "ANALOGIA DO SEGURANÇA DE BALADA",
+    title: "ANALOGIA DO SEGURANÇA DE CAMAROTE",
     content: [
-      "SEM FILTRO: Todo mundo entra, lota, VIP espera igual ao curioso.",
-      "COM FILTRO: Segurança na porta filtra, VIP vai direto pro camarote.",
-      "👉 Seu WhatsApp hoje é uma balada sem segurança na porta."
+      "SEM FILTRO: Todo mundo entra no camarote, lota, VIP espera igual ao curioso.",
+      "COM FILTRO: Segurança na porta filtra, só quem é VIP entra no camarote.",
+      "👉 Seu WhatsApp hoje é um camarote sem segurança na porta."
     ]
   },
   {
@@ -466,11 +500,11 @@ export const slides: SlideData[] = [
     id: 38,
     section: "SEGREDO 3",
     layout: SlideLayout.BULLETS,
-    title: "HISTÓRIA DA WHIRLPOOL (Brastemp, Consul, KitchenAid)",
+    title: "HISTÓRIA DA UNIDAS (Aluguel de Carros)",
     icon: "💸",
     content: [
       "Vendedora Top Performer (tinha até Porsche).",
-      "Perdeu negócio GIGANTE com a Whirlpool.",
+      "Perdeu negócio GIGANTE com a Unidas.",
       "Motivo: Esqueceu de fazer follow-up."
     ]
   },
@@ -513,12 +547,12 @@ export const slides: SlideData[] = [
     id: 41,
     section: "SEGREDO 3",
     layout: SlideLayout.COMPARISON,
-    title: "COBRANÇA vs CONVERSA",
+    title: "COBRANÇA vs CONVERSA INTELIGENTE",
     comparisonData: {
-      leftTitle: "FOLLOW-UP RUIM ❌",
-      leftContent: ["'E aí?'", "'Viu minha proposta?'", "'Vai querer?'"],
-      rightTitle: "FOLLOW-UP BOM ✅",
-      rightContent: ["'Surgiu condição especial...'", "'Antes de decidir, veja isso...'", "'Fulano tinha essa dúvida...'"]
+      leftTitle: "FOLLOW-UP GENÉRICO ❌",
+      leftContent: ["'E aí, decidiu?'", "'Viu minha proposta?'", "'Vai querer?'", "Ignora o contexto do cliente", "Mesmo texto pra todo mundo"],
+      rightTitle: "FOLLOW-UP INTELIGENTE ✅",
+      rightContent: ["Entende o momento do cliente", "Captura objeções durante a conversa", "Trata cada objeção no follow-up seguinte", "'Você mencionou que o prazo era curto. Conseguimos flexibilizar...'", "'Entendi que precisa consultar o sócio. Preparei um resumo pra facilitar...'"]
     }
   },
   {
@@ -639,6 +673,7 @@ export const slides: SlideData[] = [
     layout: SlideLayout.CENTER_STATEMENT,
     title: "",
     highlight: "Você pode tentar sozinho. Ou pegar o caminho que eu criei gastando milhões.",
+    highlightTerms: ["pegar o caminho"],
     subtitle: "Posso mostrar?"
   },
 
@@ -721,7 +756,7 @@ export const slides: SlideData[] = [
   },
   {
     id: 59,
-    section: "STACK",
+    section: "",
     layout: SlideLayout.BONUS_STACK,
     title: "TUDO QUE VOCÊ RECEBE:",
     content: [
